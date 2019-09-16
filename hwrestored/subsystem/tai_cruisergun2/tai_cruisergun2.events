@@ -21,7 +21,7 @@ effects =
             { "animtime", "0" },
             { "marker", "Weapon_Gun1_Muzzle" },
             { "fx", "muzzle_flash_combo_small_capital" },
-            { "sound", "WEAPON/MEGASHIP/FIRE/WEAPON_MEGASHIP_HULL_DEFENSE_GUN_SHELL" },
+            { "sound", "WEAPON/MEGASHIP/FIRE/WEAPON_MEGASHIP_HULL_DEFENCE_GUN_SHELL" },
             { "fx_scale", "3" },
         },			
     }
