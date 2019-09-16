@@ -1,12 +1,12 @@
 StartWeaponConfig(NewWeaponType,"AnimatedTurret","Bullet","kinetic_mass","Normal",1900,2000,0,0,0,0,1,1,0,0.18,1.4,1.1,1,0,500,500,0.1,"Normal",0,0,0);
-AddWeaponResult(NewWeaponType,"Hit","DamageHealth","Target",12,12,"");
+AddWeaponResult(NewWeaponType,"Hit","DamageHealth","Target",6,6,"");
 setPenetration(NewWeaponType,5,1,
-{Unarmoured=0.36},
-{Unarmoured_hw1=0.34},
-{LightArmour=0.25 * 1.2},
-{LightArmour_hw1=0.5 * 1.2},
-{MediumArmour=0.50},
-{HeavyArmour=0.50},
+{Unarmoured=1.0},
+{Unarmoured_hw1=1.0},
+{LightArmour=1.0},
+{LightArmour_hw1=1.0},
+{MediumArmour=1.0},
+{HeavyArmour=1.0},
 {PlanetKillerArmour=0},
 {SwarmerArmor=1.0},
 {SpaceMineArmor=1},
@@ -14,8 +14,8 @@ setPenetration(NewWeaponType,5,1,
 {HeavyMissileArmor=0},
 {SmallMissileArmor=0},
 {SubSystemArmour=1.0},
-{TurretArmour=0.50},
-{ResArmour=0.6});
+{TurretArmour=1.0},
+{ResArmour=1.0});
 setAccuracy(NewWeaponType,1,
 {Swarmer=0.80},
 {SpaceMine=0.35},

@@ -2,7 +2,7 @@ StartWeaponConfig(NewWeaponType,"AnimatedTurret","InstantHit","HealBeam","Normal
 AddWeaponResult(NewWeaponType,"Hit","DamageHealth","Target",-14.17,-14.17,"");
 setPenetration(NewWeaponType,5,1,
 {PlanetKillerArmour=0},
-{SwarmerArmor=0.10},
+{SwarmerArmor=1.0},
 {SpaceMineArmor=1});
 setAccuracy(NewWeaponType,1);
 setAngles(NewWeaponType,0,-45,45,-45,45);

@@ -3,12 +3,12 @@ AddWeaponResult(NewWeaponType,"Hit","SpawnWeaponFire","Target",0,0,"Vgr_MediumMi
 AddWeaponResult(NewWeaponType,"Miss","SpawnWeaponFire","Target",0,0,"Vgr_MediumMissileBurst");
 AddWeaponResult(NewWeaponType,"Hit","DamageHealth","Target",95,95,"");
 setPenetration(NewWeaponType,5,1,
-{Unarmoured=0.04},
-{Unarmoured_hw1=0.09},
-{Lightarmour=0.60},
-{Lightarmour_hw1=0.58},
+{Unarmoured=1.0},
+{Unarmoured_hw1=1.0},
+{Lightarmour=1.0},
+{Lightarmour_hw1=1.0},
 {PlanetKillerArmour=0},
-{SwarmerArmor=0.10},
+{SwarmerArmor=1.0},
 {TorpedoArmor=0},
 {HeavyMissileArmor=0},
 {SmallMissileArmor=0},
