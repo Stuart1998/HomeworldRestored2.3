@@ -36,7 +36,7 @@ setAccuracy(NewWeaponType,1,
 {ResourceLarge=0.6});
 setAngles(NewWeaponType,10,-20,160,-10,60);
 setMiscValues(NewWeaponType,0.25,0);
-addAnimTurretSound(NewWeaponType,"Data:Sound/SFX/ETG/SPECIAL/SPECIAL_ABILITIES_TURRET_ON");
+addAnimTurretSound(NewWeaponType,"Data:Sound/SFX/ETG/SPECIAL/SPECIAL_ABILITIES_TURRET_ON_HW1");
 setMissProperties(NewWeaponType, 0.02, 0.04, 0.50, 0.60, 0.70, 0.70);
 setLifetimeMult(NewWeaponType, 1.75);
 setSpeedvsAccuracyAgainst(NewWeaponType, 1, 50.0, 1.5, 200, 1.1, 300, 1.0);
