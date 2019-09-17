@@ -24,6 +24,6 @@ addAnimTurretSound(NewWeaponType,"Data:Sound/SFX/ETG/SPECIAL/SPECIAL_ABILITIES_T
 setMissProperties(NewWeaponType, 0.04, 0.05, 0.20, 0.30, 0.5, 0.5);
 setSpeedvsAccuracyAgainst(NewWeaponType, 1, 50.0, 5.0, 100, 1.0, 200, 1.75, 235, 1.85, 240, 1.0, 300, 0.05);
 setLifetimeMult(NewWeaponType, 1.85);
-setBallistics(NewWeaponType,1,0.0);
+setBallistics(NewWeaponType,0,0.0);
 
 setFireMultFactor(NewWeaponType, 1.0);
