@@ -256,7 +256,7 @@ NewMainMenu = {
 				autosize = 1,
 				
 				Text = {	
-					text = "Homeworld Restored v 0.1.0.0 ALPHA 3",
+					text = "Homeworld Restored v 0.1.0.0 ALPHA 4",
 					font = "ButtonFont",
 					vAlign = "Top",
 					color = {119,166,191,255},

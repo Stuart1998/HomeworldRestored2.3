@@ -1,4 +1,4 @@
-StartWeaponConfig(NewWeaponType,"AnimatedTurret","Bullet","Kinetic_Small","Normal",2500,3450,0,0,0,0,1,1,1,2.4,0,0,1,0,120,120,0.1,"Normal",1,0,0);
+StartWeaponConfig(NewWeaponType,"AnimatedTurret","Bullet","Kinetic_Small","Normal",2500,2000,0,0,0,0,1,1,1,2.4,0,0,1,0,120,120,0.1,"Normal",1,0,0);
 AddWeaponResult(NewWeaponType,"Hit","DamageHealth","Target",70,75,"");
 setPenetration(NewWeaponType,5,1,
 {PlanetKillerArmour=0},

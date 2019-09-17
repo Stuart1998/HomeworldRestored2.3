@@ -1,4 +1,4 @@
-StartWeaponConfig(NewWeaponType,"AnimatedTurret","Bullet","Kinetic_Mass_HW1","Normal",1800,2000,0,0,0,0,1,1,0,0.16,2.5,1.0,1,0,500,500,0.1,"Normal",0,0,0);
+StartWeaponConfig(NewWeaponType,"AnimatedTurret","Bullet","Kinetic_Mass_HW1","Normal",1800,2100,0,0,0,0,1,1,0,0.16,2.5,1.0,1,0,500,500,0.1,"Normal",0,0,0);
 AddWeaponResult(NewWeaponType,"Hit","DamageHealth","Target",6,6,"");
 setPenetration(NewWeaponType,5,1,
 {Unarmoured=1.0},
