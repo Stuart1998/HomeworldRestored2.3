@@ -28,5 +28,5 @@ setAccuracy(NewWeaponType,1,
 {munition=0.01});
 setAngles(NewWeaponType,14,-6,14,-35,6);
 addAnimTurretSound(NewWeaponType,"Data:Sound/SFX/ETG/SPECIAL/SPECIAL_ABILITIES_TURRET_ON_HW1");
-
+setBallistics(NewWeaponType,0,0.0);
 setFireMultFactor(NewWeaponType, 1.0);

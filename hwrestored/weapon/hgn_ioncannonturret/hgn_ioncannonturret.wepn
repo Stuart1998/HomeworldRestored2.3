@@ -23,6 +23,7 @@ setAccuracy(NewWeaponType,1,
 {Corvette=0.04},
 {Corvette_hw1=0.04},
 {munition=0.2});
+setBallistics(NewWeaponType,0,0.0);
 setAngles(NewWeaponType,60,-180,180,-12,90);
 setMiscValues(NewWeaponType,0,0.5);
 addAnimTurretSound(NewWeaponType,"Data:Sound/SFX/ETG/SPECIAL/SPECIAL_ABILITIES_TURRET_ON");

@@ -22,5 +22,5 @@ setAccuracy(NewWeaponType,1,
 {Corvette_hw1=0.08},
 {munition=0.1});
 setAngles(NewWeaponType,15,0,0,0,0);
-
+setBallistics(NewWeaponType,0,0.0);
 setFireMultFactor(NewWeaponType, 1.0);

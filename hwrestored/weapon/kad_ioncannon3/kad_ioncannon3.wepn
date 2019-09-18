@@ -21,6 +21,7 @@ setAccuracy(NewWeaponType,1,
 {Corvette=0.08},
 {Corvette_hw1=0.08},
 {munition=0.1});
+setBallistics(NewWeaponType,0,0.0);
 setAngles(NewWeaponType,40,-34,14,-50,50);
 setDamageFalloff(NewWeaponType, 0.15/3000.0, 0.1);
 setAccuracyFalloff(NewWeaponType, 0.15/3000.0, 0.1);

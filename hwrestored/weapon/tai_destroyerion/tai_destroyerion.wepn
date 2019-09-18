@@ -27,5 +27,5 @@ setAccuracy(NewWeaponType,1,
 {BigCapitalShip=0.8},
 {munition=0.01});
 setAngles(NewWeaponType,14,0,0,0,0);
-
+setBallistics(NewWeaponType,0,0.0);
 setFireMultFactor(NewWeaponType, 1.0);
