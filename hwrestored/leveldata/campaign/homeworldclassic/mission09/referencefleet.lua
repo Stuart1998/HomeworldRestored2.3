@@ -9,48 +9,48 @@ Fleet =
     },
     {
         Type = "Kus_ResearchShip",
-        Number = 1,
+        Number = 10,
     },
     {
         Type = "Kus_ResourceCollector",
-        Number = 4,
+        Number = 40,
     },
     {
         Type = "Kus_SalvageCorvette",
-        Number = 4,
+        Number = 40,
     }, 
     {
         Type = "Kus_Interceptor",
-        Number =12,
+        Number =120,
     },
     {
         Type = "Kus_LightCorvette",
-        Number = 5,
+        Number = 50,
     },
     {
         Type = "Kus_HeavyCorvette",
-        Number = 9,
+        Number = 90,
     },
     {
         Type = "Kus_AttackBomber",
-        Number = 14,
+        Number = 140,
     },
     {
         Type = "Kus_AssaultFrigate",
-        Number = 5,
+        Number = 50,
     },
     {
         Type = "Kus_IonCannonFrigate",
-        Number = 4,
+        Number = 40,
     },
     {
         Type = "Kus_Destroyer",
-        Number = 2,
+        Number = 20,
     },
 }
 
 -- and we think they should have this much money:
-RUs = 2000
+RUs = 200000
 
 --Load expanded options
 dofilepath("data:scripts/playerspatch_util.lua")
