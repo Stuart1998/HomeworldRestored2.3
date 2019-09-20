@@ -1108,7 +1108,7 @@ effects =
             { "animtime", "0" },
             { "marker", "Weapon_DreadTurret_Muzzle" },
             { "fx", "muzzle_flash_combo_small_capital_dread" },
-            { "sound", "WEAPON/MEGASHIP/FIRE/FLAREGUN" },
+            { "sound", "WEAPON/MEGASHIP/FIRE/flaregun" },
             { "fx_scale", "3" },
         },
         event123 =
@@ -1117,7 +1117,7 @@ effects =
             { "animtime", "0.2" },
             { "marker", "Weapon_DreadTurretSlave_Muzzle" },
             { "fx", "muzzle_flash_combo_small_capital_dread" },
-            { "sound", "WEAPON/MEGASHIP/FIRE/FLAREGUN" },
+            { "sound", "WEAPON/MEGASHIP/FIRE/flaregun" },
             { "fx_scale", "3" },
         },
         event124 =
