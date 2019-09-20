@@ -1,5 +1,5 @@
 StartWeaponConfig(NewWeaponType,"Gimble","Bullet","Kinetic_Mass_HW1","Normal",1220,1900,0,0,0,0,1,1,0,0.18,1.0,1.5,1,1,0,0,0.1,"Normal",1,0,0);
-AddWeaponResult(NewWeaponType,"Hit","DamageHealth","Target",10,10,"");
+AddWeaponResult(NewWeaponType,"Hit","DamageHealth","Target",18,18,"");
 setPenetration(NewWeaponType,5,1,
 {Unarmoured=1.0},
 {Unarmoured_hw1=1.0},
