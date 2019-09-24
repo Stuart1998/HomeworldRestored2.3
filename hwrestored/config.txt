@@ -23,7 +23,7 @@ ModType: MOD
 
 // bigfilename is the file name you want to use for your .big file (this should be a single word with no spaces).
 // for ModType 'Locale' this MUST match the name of the language in the 'locale' folder of your Locale MOD.
-BigFilename: HomeworldRestoredv0100alpha.big
+BigFilename: HomeworldRestored.big
 
 // WorkshopID is the Steam Workshop item number assigned to this item when you first create it.
 // This should be 0 by default before you create your Workshop item and the Workshop Tool will
@@ -35,4 +35,4 @@ WorkshopID: 402223886
 Description:
 While Homeworld Remastered provides superb graphical updates to Homeworld (both one and two) the gameplay direction has been unmodified from the sub-par gameplay that can be found in Homeworld 2 and the sound has been absolutely murdered. In an effort to fix these issues, I have created Homeworld Restored. This mod reduces damage dealt by all super-capital ships and some frigates to return the gameplay to the brilliance that was homeworld 1. Destroyer and especially cruiser range is no longer insane and frigates should be much more useful against larger vessels. Corvettes and assault frigates have had their behavior fixed to bring all of their guns to bear and sound effects have been restored to their classic incarnations. The Turanics and Kadeshi are now more challenging and the Progenitor vessels are now more powerful in relation to your own.
 
-This is an early version, based off of the 2.3 Player's Patch.
+HWRestored is built off of the 2.3 player's patch. Credit to the Player's Patch team for their work. Credit also goes to the Homeworld Fulcrum team for their Ion Beam effects and the effects I adapted for the Vaygr Laser Corvette and Progenitor Dreadnought.
