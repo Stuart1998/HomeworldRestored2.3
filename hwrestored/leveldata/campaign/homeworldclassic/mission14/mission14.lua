@@ -5973,11 +5973,23 @@ function Init_Mission14(MissionName)
 	KAS_HW1CPUEnableAIFeature(64, 1)    --kasfEnableAIFeature(64, 1)
 	KAS_HW1CPUEnableAIFeature(256, 1)    --kasfEnableAIFeature(256, 1)
 	KAS_HW1CPUEnableAIFeature(512, 1)    --kasfEnableAIFeature(512, 1)
+	SobGroup_InactiveWhenCaptured("CPUCarrier", 1)
+	Players_Mothership = "Players_Mothership"
+	SobGroup_Create(Players_Mothership)
+	SobGroup_FillShipsByType( Players_Mothership, "Player_Ships0", "Kus_MotherShip" )
 
 	KAS_CampaignAutoSave(14, "$61700")    --kasfSaveLevel(14, LSTRING_Savegame[strCurLanguage])
 	
 end
 
+
+function Init_Mission14_Carrier_Capture(TeamName)
+
+	Kus_Tcarrier_Free = SobGroup_CreateShip ("Players_Mothership", "Kus_Tcarrier")
+	SobGroup_SwitchOwner( Kus_Tcarrier_Free, 0 )
+    KAS_SetColourScheme(Kus_Tcarrier_Free, 1)
+	
+end
 
 --
 --  "watch" code for Mission14 mission
@@ -5989,6 +6001,11 @@ function Watch_Mission14(MissionName)
 	
 	_VIFONCE038 = 1 --created,set;
 	KASTimer_Start(TimerID_LocationCardTimer, 1)
+	end
+	if (G_SalvageCarrier ~= 0) then
+	print("Creating new carrier")	
+	G_SalvageCarrier = 0 --set
+	Init_Mission14_Carrier_Capture(TeamName)
 	end
 	if (KASTimer_IsExpiredIfSoDestroy(TimerID_LocationCardTimer) ~= 0) then
 	

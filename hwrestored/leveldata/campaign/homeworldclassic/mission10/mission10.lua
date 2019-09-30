@@ -62,6 +62,7 @@ _VIFONCE004 = {["DummyTeam"] = 0}
 _VIFONCE005 = {["DummyTeam"] = 0}
 _VIFONCE006 = {["DummyTeam"] = 0}
 _VIFONCE007 = {["DummyTeam"] = 0}
+_VIFONCE016 = {["EliteCarrier"] = 0}
 
 --Following are Team-Scoped timers: referenced differently than globals.
 FIOpenSensorsTimer = {["DummyTeam"] = 2}
@@ -1233,6 +1234,14 @@ function Init_Mission10_EliteCarrier(TeamName)
 	
 end 
 
+function Init_Mission10_Carrier_Capture(TeamName)
+
+	Kus_Tcarrier_Free = SobGroup_CreateShip ("Players_Mothership", "Kus_Tcarrier")
+	SobGroup_SwitchOwner( Kus_Tcarrier_Free, 0 )
+    KAS_SetColourScheme(Kus_Tcarrier_Free, 1)
+	
+end
+
 
 --
 --  "watch" code for Mission10 EliteCarrier FSM
@@ -1240,6 +1249,15 @@ end
 function Watch_Mission10_EliteCarrier(TeamName)
 	--FSM: FSM_Mission10_EliteCarrier
 	--TeamName = EliteCarrier
+	
+	if (_VIFONCE016[TeamName] == 0 and (G_SalvageCarrier ~= 0)) then  -- "ifonce" #16
+		
+	print("Creating new carrier")	
+	_VIFONCE016[TeamName] = 1 --created,set;
+	G_SalvageCarrier = 0 --set
+	Init_Mission10_Carrier_Capture(TeamName)
+	end
+	
 	KAS_UnderAttack(TeamName, "GrowSelection_AttackCarrier")    --kasfUnderAttack(kasGrowSelectionPtr("AttackCarrier"))
 	if ((SobGroup_Count("GrowSelection_AttackCarrier") > 0) or (KASTimer_IsExpired(TimerID_G_TimerForNikki) ~= 0)) then     --kasfShipsCount(kasGrowSelectionPtr("AttackCarrier"))
 	
@@ -3458,6 +3476,10 @@ function Init_Mission10(MissionName)
 	KASRule_AddFSM("DummyTeam", "Watch_Mission10_MissionFlow", "Init_Mission10")
 	Init_Mission10_MissionFlow("DummyTeam")
 	RadDam = 0 --created,set
+	SobGroup_InactiveWhenCaptured("EliteCarrier", 1)
+	Players_Mothership = "Players_Mothership"
+	SobGroup_Create(Players_Mothership)
+	SobGroup_FillShipsByType( Players_Mothership, "Player_Ships0", "Kus_MotherShip" )
 	KAS_CampaignAutoSave(10, "$61500")    --kasfSaveLevel(10, LSTRING_Savegame[strCurLanguage])
 	singlePlayerLocationCard("$61501", 10)    --kasfLocationCard(10000, LSTRING_LocationCard[strCurLanguage])
 	
