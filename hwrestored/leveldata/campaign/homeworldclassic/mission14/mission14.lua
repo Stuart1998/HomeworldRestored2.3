@@ -23,6 +23,7 @@
 --kasfTutSetTextDisplayBoxToSubtitleRegion
 
 
+dofilepath("data:scripts/playerspatch_speech_util.lua")
 dofilepath("data:scripts/SCAR/SCAR_Util.lua")             --stock HW2 scripting utilities
 dofilepath("data:scripts/SCAR/KASUtil.lua")               --HW1->HW2 scripting utilities
 dofilepath("data:scripts/SCAR/SinglePlayerFlow.lua")      --Emulation of HW1 singleplayer functionality
@@ -209,25 +210,25 @@ strCurLanguage = 1  --Naive treatement of localization language.;
 LSTRING_Savegame = {  -- multilingual strings
 	"14 - Bridge of Sighs",
 	"14 - Pont des Soupirs",
-	"14 – Brücke der Seufzer",
+	"14 ï¿½ Brï¿½cke der Seufzer",
 	"14 - El puente de los suspiros",
 	"14 - Il ponte di Sighs", }
 LSTRING_LocationCard = {  -- multilingual strings
 	"BRIDGE OF SIGHS",
 	"PONT DES SOUPIRS",
-	"BRÜCKE DER SEUFZER",
+	"BRï¿½CKE DER SEUFZER",
 	"EL PUENTE DE LOS SUSPIROS",
 	"IL PONTE DI SIGHS", }
 LSTRING_FIDestroyGennyTASKBAR = {  -- multilingual strings
 	"Destroy field generator",
-	"Destruction générateur de champs",
-	"Feldgenerator zerstören.",
+	"Destruction gï¿½nï¿½rateur de champs",
+	"Feldgenerator zerstï¿½ren.",
 	"Destruir generador de campo",
 	"Distruggi il generatore del campo.", }
 LSTRING_FIDestroyGatesTASKBAR = {  -- multilingual strings
 	"Destroy hyperspace gates",
-	"Destruction accès à l'hyperespace",
-	"Hyperraumtore zerstören.",
+	"Destruction accï¿½s ï¿½ l'hyperespace",
+	"Hyperraumtore zerstï¿½ren.",
 	"Destruir puertas hiperespaciales",
 	"Distruggi i portali dell'Iperspazio.", }
 LSTRING_Hyperspace = {  -- multilingual strings
@@ -5973,23 +5974,11 @@ function Init_Mission14(MissionName)
 	KAS_HW1CPUEnableAIFeature(64, 1)    --kasfEnableAIFeature(64, 1)
 	KAS_HW1CPUEnableAIFeature(256, 1)    --kasfEnableAIFeature(256, 1)
 	KAS_HW1CPUEnableAIFeature(512, 1)    --kasfEnableAIFeature(512, 1)
-	SobGroup_InactiveWhenCaptured("CPUCarrier", 1)
-	Players_Mothership = "Players_Mothership"
-	SobGroup_Create(Players_Mothership)
-	SobGroup_FillShipsByType( Players_Mothership, "Player_Ships0", "Kus_MotherShip" )
 
 	KAS_CampaignAutoSave(14, "$61700")    --kasfSaveLevel(14, LSTRING_Savegame[strCurLanguage])
 	
 end
 
-
-function Init_Mission14_Carrier_Capture(TeamName)
-
-	Kus_Tcarrier_Free = SobGroup_CreateShip ("Players_Mothership", "Kus_Tcarrier")
-	SobGroup_SwitchOwner( Kus_Tcarrier_Free, 0 )
-    KAS_SetColourScheme(Kus_Tcarrier_Free, 1)
-	
-end
 
 --
 --  "watch" code for Mission14 mission
@@ -6001,11 +5990,6 @@ function Watch_Mission14(MissionName)
 	
 	_VIFONCE038 = 1 --created,set;
 	KASTimer_Start(TimerID_LocationCardTimer, 1)
-	end
-	if (G_SalvageCarrier ~= 0) then
-	print("Creating new carrier")	
-	G_SalvageCarrier = 0 --set
-	Init_Mission14_Carrier_Capture(TeamName)
 	end
 	if (KASTimer_IsExpiredIfSoDestroy(TimerID_LocationCardTimer) ~= 0) then
 	
@@ -6130,6 +6114,9 @@ end
 function OnStartOrLoad()
     print("OnStartOrLoad issued")
 
+	-- Write race list
+	SpeechRaceHelper()
+	
     --Mission-global GrowSelections/SobGroups
     KASSobGroup_Create("GrowSelection_Attackers")
     KASSobGroup_Create("GrowSelection_AttackingIonFrigates")

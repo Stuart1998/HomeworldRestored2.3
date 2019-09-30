@@ -4,7 +4,7 @@ Number_Properties_Priority = 1.0
 
 Number_Properties = {
 	cfg_race_is_playable = 1.0,
-	cfg_race_index_sort = 10.0,
+	cfg_race_index_sort = 3.0,
 	cfg_race_select_weight = 9.8,
 	cfg_race_is_random = 1.0,
 	

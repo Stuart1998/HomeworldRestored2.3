@@ -21,6 +21,7 @@
 --kasfSoundEvent
 
 
+dofilepath("data:scripts/playerspatch_speech_util.lua")
 dofilepath("data:scripts/SCAR/SCAR_Util.lua")             --stock HW2 scripting utilities
 dofilepath("data:scripts/SCAR/KASUtil.lua")               --HW1->HW2 scripting utilities
 dofilepath("data:scripts/SCAR/SinglePlayerFlow.lua")      --Emulation of HW1 singleplayer functionality
@@ -224,7 +225,6 @@ TimerID_G_StartUnLetterbox = 2
 TimerID_G_StayFocusedOnDefector = 0
 TimerID_G_SupportComeOnIn = 15
 TimerID_G_SupportFrigateIsIn = 19
-TimerID_G_IntIsIn=20
 TimerID_G_TechnologyTimer = 7
 TimerID_G_TellInterceptorsToLaunch = 20
 TimerID_G_UnderAttackTimer = 5
@@ -261,20 +261,20 @@ LSTRING_LocationCard = {  -- multilingual strings
 	"IL CUORE DELLA GALASSIA", }
 LSTRING_FICaughtInFieldTASKBAR = {  -- multilingual strings
 	"Destroy source of gravity field",
-	"Destruction de la source du champ de gravité",
+	"Destruction de la source du champ de gravitï¿½",
 	"Quelle des Gravitationsfeldes vernichten.",
 	"Destruir la fuente del campo gravitatorio",
 	"Distruggi la fonte del campo gravitazionale", }
 LSTRING_FIUnderAttackTASKBAR = {  -- multilingual strings
 	"Protect the Fleet",
 	"Protection de la Flotte",
-	"Die Flotte schützen.",
+	"Die Flotte schï¿½tzen.",
 	"Proteger la flota",
 	"Progetta la flotta", }
 LSTRING_FIHelpDefectorTASKBAR = {  -- multilingual strings
 	"Protect the Defector",
 	"Protection du Transfuge",
-	"Den Überläufer schützen.",
+	"Den ï¿½berlï¿½ufer schï¿½tzen.",
 	"Proteger el deflector",
 	"Proteggi il Defector", }
 LSTRING_Hyperspace = {  -- multilingual strings
@@ -8087,6 +8087,7 @@ function Init_Mission12_ChaseDefector_WaitToHyperspace(TeamName)
 	end 
 	if (KAS_TeamNamesEqual(TeamName, "ChaseInt") ~= 0) then     --kasfThisTeamIs(kasAITeamPtr("ChaseInt"))
 	
+	SobGroup_DockSobGroupInstant(TeamName, "ChaseSupport")    --kasfDockInstant(kasAITeamPtr("ChaseSupport"))
 	--kasJump("WaitToLaunch")
 	KASRule_Add(TeamName, "Watch_Mission12_ChaseDefector_WaitToLaunch", "Init_Mission12_ChaseDefector_WaitToHyperspace")
 	Init_Mission12_ChaseDefector_WaitToLaunch(TeamName)
@@ -8191,9 +8192,7 @@ function Watch_Mission12_ChaseDefector_HyperspaceOut(TeamName)
 	if (KASTimer_IsExpired(TimerID_G_SupportComeOnIn) ~= 0) then 
 	
 	KAS_TeamHyperspaceIn(TeamName, "SupportIN")    --kasfTeamHyperspaceIn(kasVectorPtr("SupportIN"))
-	KAS_TeamHyperspaceIn(TeamName, "IntIN")    --kasfTeamHyperspaceIn(kasVectorPtr("SupportIN"))
 	KASTimer_Start(TimerID_G_SupportFrigateIsIn, 15)
-	KASTimer_Start(TimerID_G_IntIsIn, 15)
 	KASTimer_Start(TimerID_G_TellInterceptorsToLaunch, 45)
 	--kasJump("WaitToAttack")
 	--KASRule_Remove("FSM_Mission12_ChaseDefector", "Watch_Mission12_ChaseDefector_HyperspaceOut")
@@ -8243,16 +8242,6 @@ function Watch_Mission12_ChaseDefector_WaitToAttack(TeamName)
 	elseif (KAS_TeamNamesEqual(TeamName, "ChaseFrigate") ~= 0) then     --kasfThisTeamIs(kasAITeamPtr("ChaseFrigate"))
 	
 	if (KASTimer_IsExpired(TimerID_G_FrigateIsIn) ~= 0) then 
-	
-	--kasJump("AttackDefector")
-	--KASRule_Remove("FSM_Mission12_ChaseDefector", "Watch_Mission12_ChaseDefector_WaitToAttack")
-	KASRule_Add(TeamName, "Watch_Mission12_ChaseDefector_AttackDefector", "Watch_Mission12_ChaseDefector_WaitToAttack")
-	Init_Mission12_ChaseDefector_AttackDefector(TeamName)
-	return
-	end 
-	elseif (KAS_TeamNamesEqual(TeamName, "ChaseInt") ~= 0) then     --kasfThisTeamIs(kasAITeamPtr("ChaseFrigate"))
-	
-	if (KASTimer_IsExpired(TimerID_G_IntIsIn) ~= 0) then 
 	
 	--kasJump("AttackDefector")
 	--KASRule_Remove("FSM_Mission12_ChaseDefector", "Watch_Mission12_ChaseDefector_WaitToAttack")
@@ -9057,14 +9046,13 @@ function Init_Mission12(MissionName)
 	KASRule_AddFSM("AICollector", "Watch_Mission12_AIShips", "Init_Mission12")
 	Init_Mission12_AIShips("AICollector")
 	--kasFSMCreate("AIShips")
-	KASRule_AddFSM("AICarrier", "Watch_Mission12_AIShips", "Init_Mission12")
-	Init_Mission12_AIShips("AICarrier")
-	--kasFSMCreate("AIShips")
 	KASRule_AddFSM("AIController", "Watch_Mission12_AIShips", "Init_Mission12")
 	Init_Mission12_AIShips("AIController")
 	--kasFSMCreate("Carrier")
 	KASRule_AddFSM("Carrier", "Watch_Mission12_Carrier", "Init_Mission12")
 	Init_Mission12_Carrier("Carrier")
+	KASRule_AddFSM("AICarrier", "Watch_Mission12_AIShips", "Init_Mission12")
+	Init_Mission12_AIShips("AICarrier")
 	--kasFSMCreate("GuardCarrier")
 	KASRule_AddFSM("GuardCarrierIon", "Watch_Mission12_GuardCarrier", "Init_Mission12")
 	Init_Mission12_GuardCarrier("GuardCarrierIon")
@@ -9241,7 +9229,7 @@ function Watch_Mission12(MissionName)
 	_VIFONCE045 = 1 --created,set;
 	KAS_MissionFailed()    --kasfMissionFailed()
 	end 
-	if (_VIFONCE046 == 0 and ((SobGroup_Count("ChaseDestroyer") == 0) and (SobGroup_Count("ChaseFrigate") == 0) and (SobGroup_Count("ChaseSupport") == 0))) then  -- "ifonce" #46    --kasfShipsCount(kasAITeamShipsPtr("ChaseSupport"))    --kasfShipsCount(kasAITeamShipsPtr("ChaseFrigate"))    --kasfShipsCount(kasAITeamShipsPtr("ChaseDestroyer"))
+	if (_VIFONCE046 == 0 and ((SobGroup_Count("ChaseDestroyer") == 0) and (SobGroup_Count("ChaseInt") == 0) and (SobGroup_Count("ChaseFrigate") == 0) and (SobGroup_Count("ChaseSupport") == 0))) then  -- "ifonce" #46    --kasfShipsCount(kasAITeamShipsPtr("ChaseSupport"))    --kasfShipsCount(kasAITeamShipsPtr("ChaseFrigate"))    --kasfShipsCount(kasAITeamShipsPtr("ChaseDestroyer"))
 	
 	_VIFONCE046 = 1 --created,set;
 	KASObjective_SetState(ObjectiveID_ProtectDefector, 1)    --kasfObjectiveSet("ProtectDefector", 1)
@@ -9280,6 +9268,9 @@ end
 function OnStartOrLoad()
     print("OnStartOrLoad issued")
 
+	-- Write race list
+	SpeechRaceHelper()
+	
     --Mission-global GrowSelections/SobGroups
     KASSobGroup_Create("GrowSelection_AllShipsInWorld")
     KASSobGroup_Create("GrowSelection_AttackingChaseTeam")
@@ -9435,7 +9426,7 @@ function OnStartOrLoad()
     KASSobGroup_CreateIfNotExist("AICollector")
     KASSobGroup_CreateIfNotExist("AIController")
     KASSobGroup_CreateIfNotExist("Carrier")
-    KASSobGroup_CreateIfNotExist("AICarrier")
+	KASSobGroup_CreateIfNotExist("AICarrier")
     KASSobGroup_CreateIfNotExist("ChaseDestroyer")
     KASSobGroup_CreateIfNotExist("ChaseFrigate")
     KASSobGroup_CreateIfNotExist("ChaseInt")
@@ -9479,7 +9470,7 @@ function OnStartOrLoad()
     KAS_SetColourScheme("AICollector", 1)
     KAS_SetColourScheme("AIController", 1)
     KAS_SetColourScheme("Carrier", 1)
-    KAS_SetColourScheme("AICarrier", 1)
+	KAS_SetColourScheme("AICarrier", 1)
     KAS_SetColourScheme("ChaseDestroyer", 5)
     KAS_SetColourScheme("ChaseFrigate", 5)
     KAS_SetColourScheme("ChaseInt", 5)
