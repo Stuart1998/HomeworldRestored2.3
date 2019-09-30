@@ -224,6 +224,7 @@ TimerID_G_StartUnLetterbox = 2
 TimerID_G_StayFocusedOnDefector = 0
 TimerID_G_SupportComeOnIn = 15
 TimerID_G_SupportFrigateIsIn = 19
+TimerID_G_IntIsIn=20
 TimerID_G_TechnologyTimer = 7
 TimerID_G_TellInterceptorsToLaunch = 20
 TimerID_G_UnderAttackTimer = 5
@@ -8086,7 +8087,6 @@ function Init_Mission12_ChaseDefector_WaitToHyperspace(TeamName)
 	end 
 	if (KAS_TeamNamesEqual(TeamName, "ChaseInt") ~= 0) then     --kasfThisTeamIs(kasAITeamPtr("ChaseInt"))
 	
-	SobGroup_DockSobGroupInstant(TeamName, "ChaseSupport")    --kasfDockInstant(kasAITeamPtr("ChaseSupport"))
 	--kasJump("WaitToLaunch")
 	KASRule_Add(TeamName, "Watch_Mission12_ChaseDefector_WaitToLaunch", "Init_Mission12_ChaseDefector_WaitToHyperspace")
 	Init_Mission12_ChaseDefector_WaitToLaunch(TeamName)
@@ -8191,7 +8191,9 @@ function Watch_Mission12_ChaseDefector_HyperspaceOut(TeamName)
 	if (KASTimer_IsExpired(TimerID_G_SupportComeOnIn) ~= 0) then 
 	
 	KAS_TeamHyperspaceIn(TeamName, "SupportIN")    --kasfTeamHyperspaceIn(kasVectorPtr("SupportIN"))
+	KAS_TeamHyperspaceIn(TeamName, "IntIN")    --kasfTeamHyperspaceIn(kasVectorPtr("SupportIN"))
 	KASTimer_Start(TimerID_G_SupportFrigateIsIn, 15)
+	KASTimer_Start(TimerID_G_IntIsIn, 15)
 	KASTimer_Start(TimerID_G_TellInterceptorsToLaunch, 45)
 	--kasJump("WaitToAttack")
 	--KASRule_Remove("FSM_Mission12_ChaseDefector", "Watch_Mission12_ChaseDefector_HyperspaceOut")
@@ -8241,6 +8243,16 @@ function Watch_Mission12_ChaseDefector_WaitToAttack(TeamName)
 	elseif (KAS_TeamNamesEqual(TeamName, "ChaseFrigate") ~= 0) then     --kasfThisTeamIs(kasAITeamPtr("ChaseFrigate"))
 	
 	if (KASTimer_IsExpired(TimerID_G_FrigateIsIn) ~= 0) then 
+	
+	--kasJump("AttackDefector")
+	--KASRule_Remove("FSM_Mission12_ChaseDefector", "Watch_Mission12_ChaseDefector_WaitToAttack")
+	KASRule_Add(TeamName, "Watch_Mission12_ChaseDefector_AttackDefector", "Watch_Mission12_ChaseDefector_WaitToAttack")
+	Init_Mission12_ChaseDefector_AttackDefector(TeamName)
+	return
+	end 
+	elseif (KAS_TeamNamesEqual(TeamName, "ChaseInt") ~= 0) then     --kasfThisTeamIs(kasAITeamPtr("ChaseFrigate"))
+	
+	if (KASTimer_IsExpired(TimerID_G_IntIsIn) ~= 0) then 
 	
 	--kasJump("AttackDefector")
 	--KASRule_Remove("FSM_Mission12_ChaseDefector", "Watch_Mission12_ChaseDefector_WaitToAttack")
@@ -9045,6 +9057,9 @@ function Init_Mission12(MissionName)
 	KASRule_AddFSM("AICollector", "Watch_Mission12_AIShips", "Init_Mission12")
 	Init_Mission12_AIShips("AICollector")
 	--kasFSMCreate("AIShips")
+	KASRule_AddFSM("AICarrier", "Watch_Mission12_AIShips", "Init_Mission12")
+	Init_Mission12_AIShips("AICarrier")
+	--kasFSMCreate("AIShips")
 	KASRule_AddFSM("AIController", "Watch_Mission12_AIShips", "Init_Mission12")
 	Init_Mission12_AIShips("AIController")
 	--kasFSMCreate("Carrier")
@@ -9420,6 +9435,7 @@ function OnStartOrLoad()
     KASSobGroup_CreateIfNotExist("AICollector")
     KASSobGroup_CreateIfNotExist("AIController")
     KASSobGroup_CreateIfNotExist("Carrier")
+    KASSobGroup_CreateIfNotExist("AICarrier")
     KASSobGroup_CreateIfNotExist("ChaseDestroyer")
     KASSobGroup_CreateIfNotExist("ChaseFrigate")
     KASSobGroup_CreateIfNotExist("ChaseInt")
@@ -9455,7 +9471,7 @@ function OnStartOrLoad()
     Sound_SpeechSubtitlePath("speech:missions/Mission12/")
     Scar_TracesEnable("SGAction, SGQuery, Camera, ATI, Player")
 
-    LCWatcher_SpecifyLocalFilter(LC_Scar, "_VIFONCE;AICollector;AIController;Carrier;ChaseDestroyer;ChaseFrigate;ChaseInt;ChaseSupport;Cruiser;Defector;FleetIntel;GW1Support;GW2Support;GW3Support;GravwellTeam1;GravwellTeam2;GravwellTeam3;GuardCarrierCorv;GuardCarrierDef;GuardCarrierIon;GuardCruiserCorv;GuardCruiserDef;GuardCruiserIon;GuardGWTeam1;GuardGWTeam2;GuardGWTeam3;STRBomberAT;STRBomberHC;STRCGCloak;STRCGIon;STRGWGrav;STRGWIon;STRIntInt;STRIntScout;STRMGMG;STRMGSF;StrikeTeamDispatch;TestTeam;")
+    LCWatcher_SpecifyLocalFilter(LC_Scar, "_VIFONCE;AICollector;AIController;Carrier;AICarrier;ChaseDestroyer;ChaseFrigate;ChaseInt;ChaseSupport;Cruiser;Defector;FleetIntel;GW1Support;GW2Support;GW3Support;GravwellTeam1;GravwellTeam2;GravwellTeam3;GuardCarrierCorv;GuardCarrierDef;GuardCarrierIon;GuardCruiserCorv;GuardCruiserDef;GuardCruiserIon;GuardGWTeam1;GuardGWTeam2;GuardGWTeam3;STRBomberAT;STRBomberHC;STRCGCloak;STRCGIon;STRGWGrav;STRGWIon;STRIntInt;STRIntScout;STRMGMG;STRMGSF;StrikeTeamDispatch;TestTeam;")
     KAS_SetColourSchemeColours(1, {1,0.823529411764706,0}, {1, 0, 0}, "DATA:Badges/Taiidan.tga", {0.921,0.75,0.419}, "data:/effect/trails/tai_trail_clr.tga")
     KAS_SetColourSchemeColours(5, {0,0,0}, {0, 0, 0}, "DATA:Badges/Taiidan_red.tga", {0.8,0.40156862745098,0}, "data:/effect/trails/tai_trail_clr.tga")
     Player_SetTeamColourTheme(1, {1,0.823529411764706,0}, {1, 0, 0}, "DATA:Badges/Taiidan.tga", {0.921,0.75,0.419}, "data:/effect/trails/tai_trail_clr.tga")
@@ -9463,6 +9479,7 @@ function OnStartOrLoad()
     KAS_SetColourScheme("AICollector", 1)
     KAS_SetColourScheme("AIController", 1)
     KAS_SetColourScheme("Carrier", 1)
+    KAS_SetColourScheme("AICarrier", 1)
     KAS_SetColourScheme("ChaseDestroyer", 5)
     KAS_SetColourScheme("ChaseFrigate", 5)
     KAS_SetColourScheme("ChaseInt", 5)
