@@ -105,6 +105,7 @@ _VIFONCE050 = 0
 _VIFONCE051 = 0
 _VIFONCE052 = 0
 
+
 --Following are global variables: created outside of the KAS structure and stubbed out here.
 
 --Following are Team-Scoped variables: referenced differently than globals.
@@ -173,6 +174,7 @@ _VIFONCE024 = {["Carrier"] = 0}
 _VIFONCE025 = {["Carrier"] = 0}
 _VIFONCE026 = {["Kamikaze"] = 0}
 _VIFONCE027 = {["Kamikaze2"] = 0}
+_VIFONCE053 = {["Carrier"] = 0}
 
 --Following are Team-Scoped timers: referenced differently than globals.
 AttackingCollector = {["Interceptors1"] = 9, ["Interceptors2"] = 10}
@@ -5209,6 +5211,18 @@ function Init_Mission05_Carrier(TeamName)
 	
 end 
 
+function Init_Mission05_Carrier_Capture(TeamName)
+
+	Kus_Tcarrier_Free = SobGroup_CreateShip ("Players_Mothership", "Kus_Tcarrier")
+	SobGroup_SwitchOwner( Kus_Tcarrier_Free, 0 )
+    KAS_SetColourScheme(Kus_Tcarrier_Free, 1)
+	KASSobGroup_Create("KillTaiidan")
+	Player_FillShipsByType("KillTaiidan", 1, "Tai_Interceptor")
+	Player_FillShipsByType("KillTaiidan", 1, "Tai_AssaultFrigate")
+	SobGroup_SetHealth("KillTaiidan",0)
+	
+end
+
 
 --
 --  "watch" code for Mission05 Carrier FSM
@@ -5216,6 +5230,15 @@ end
 function Watch_Mission05_Carrier(TeamName)
 	--FSM: FSM_Mission05_Carrier
 	--TeamName = Carrier
+	
+	if (_VIFONCE053[TeamName] == 0 and (G_SalvageCarrier ~= 0)) then  -- "ifonce" #53
+		
+	print("Creating new carrier")	
+	_VIFONCE053[TeamName] = 1 --created,set;
+	G_SalvageCarrier = 0 --set
+	Init_Mission05_Carrier_Capture(TeamName)
+	end
+	
 	if ((KAS_UnderAttack(TeamName, "GrowSelection_CarrierUnderAttack") ~= 0) and (G_ACT3HasBegun == 0)) then     --kasfUnderAttack(kasGrowSelectionPtr("CarrierUnderAttack"))
 	
 	if ((SobGroup_Count("GrowSelection_CarrierUnderAttack") > 0) and (CarrierIsInUnderAttackState[TeamName] == 0)) then     --kasfShipsCount(kasGrowSelectionPtr("CarrierUnderAttack"))
@@ -6358,6 +6381,10 @@ function Init_Mission05(MissionName)
 	--kasFSMCreate("Kamikaze2")
 	KASRule_AddFSM("Kamikaze2", "Watch_Mission05_Kamikaze2", "Init_Mission05")
 	Init_Mission05_Kamikaze2("Kamikaze2")
+	SobGroup_InactiveWhenCaptured("Carrier", 1)
+	Players_Mothership = "Players_Mothership"
+	SobGroup_Create(Players_Mothership)
+	SobGroup_FillShipsByType( Players_Mothership, "Player_Ships0", "Kus_MotherShip" )
 	KAS_CampaignAutoSave(5, "$61264")    --kasfSaveLevel(5, LSTRING_Savegame[strCurLanguage])
 	
 end 

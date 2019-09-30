@@ -52,14 +52,14 @@ NewShipType.swayOffsetRandomY=10
 NewShipType.swayOffsetRandomZ=10
 NewShipType.swayBobbingFactor=0
 NewShipType.swayRotateFactor=0
-setTargetBox(NewShipType, 0, -0.4,-0.3,-0.6, 0.4,0.3,0.6)
+setTargetBox(NewShipType, 0, -0.88,-0.7,-0.82, 0.55,0.3,0.55)
 NewShipType.useLayoutBounds=1
-NewShipType.layoutBoundX=120
-NewShipType.layoutBoundY=80
-NewShipType.layoutBoundZ=270
-NewShipType.layoutCenterX=0
-NewShipType.layoutCenterY=-10
-NewShipType.layoutCenterZ=80
+NewShipType.layoutBoundX=140
+NewShipType.layoutBoundY=100
+NewShipType.layoutBoundZ=300
+NewShipType.layoutCenterX=20
+NewShipType.layoutCenterY=0
+NewShipType.layoutCenterZ=90
 NewShipType.dustCloudDamageTime=200
 NewShipType.nebulaDamageTime=300
 NewShipType.MinimalFamilyToFindPathAround="MotherShip"
@@ -140,7 +140,7 @@ NewShipType.launchTimeBeforeStart=2
 NewShipType.launchNrOfShipsInDockFormation=1
 NewShipType.launchFormation="delta"
 NewShipType.strikeGroupRadius=350
-addAbility(NewShipType,"ShipHold",1,71,100,"rallypoint","Fighter, Corvette, Utility",100,
+addAbility(NewShipType,"ShipHold",1,60,100,"rallypoint","Fighter, Corvette, Utility",100,
 {Fighter="36"},
 {Corvette="340"},
 {Utility="175"});
@@ -157,25 +157,25 @@ addAbility(NewShipType,"CanBeRepaired","RepCap");
 addAbility(NewShipType,"RetireAbility",1,1);
 NewShipType.noCombatGrouping=1
 addCustomCode(NewShipType,"data:Ship/Kus_Carrier/Kus_Carrier.lua","Load_Kus_Carrier","Create_Kus_Carrier","Update_Kus_Carrier","","Kus_Carrier",2)
-LoadModel(NewShipType,1);
+LoadSharedModel(NewShipType,"Tai_Carrier");
 StartShipWeaponConfig(NewShipType,"HW1_MothershipGun","Weapon_Gun0","Weapon_Gun0");
 StartShipWeaponConfig(NewShipType,"HW1_MothershipGun","Weapon_Gun1","Weapon_Gun1");
 StartShipWeaponConfig(NewShipType,"HW1_MothershipGun","Weapon_Gun2","Weapon_Gun2");
 StartShipWeaponConfig(NewShipType,"HW1_MothershipGun","Weapon_Gun3","Weapon_Gun3");
 addShield(NewShipType,"EMP",10000,20);
-StartShipHardPointConfig(NewShipType,"Engine","Hardpoint_Engine","System","Innate","Damageable","Kus_CarrierEngine","","","","","","","","");
-StartShipHardPointConfig(NewShipType,"Resource","Hardpoint_Resource","System","Innate","Damageable","Kus_CarrierResource","","","","","","","","");
+StartShipHardPointConfig(NewShipType,"Engine","Hardpoint_Engine","System","Innate","Damageable","Tai_CarrierEngine","","","","","","","","");
+StartShipHardPointConfig(NewShipType,"Resource","Hardpoint_Resource","System","Innate","Damageable","Tai_CarrierResource","","","","","","","","");
 StartShipHardPointConfig(NewShipType,"Fighter Production","Hardpoint_Resource","System","Production","Indestructible","","hw1_production_fighter","","","","","","","");
 StartShipHardPointConfig(NewShipType,"Corvette Production","Hardpoint_Resource","System","Production","Indestructible","","hw1_production_corvette","","","","","","","");
 StartShipHardPointConfig(NewShipType,"Frigate Production","Hardpoint_Resource","System","Production","Indestructible","","hw1_production_frigate","","","","","","","");
 SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg03",1, 0.40,0,0,0, 0,0,0,50,0,0,0,200,0,0,0,50,0,0,0,50);
 SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg02",1, 0.19,0,0,0, 30,-20,200,25,300,150,85,50,0,0,0,85,0,0,0,50);
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg04",1, 0.13,0,0,0, 50,40,-150,50,65,25,5,25,0,0,0,95,0,0,0,50);
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg05",1, 0.10,0,0,0, 25,10,-100,30,35,75,62,75,0,0,0,80,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg05",1, 0.13,0,0,0, 25,10,-100,30,35,75,62,75,0,0,0,80,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg01",1, 0.10,0,0,0, 60,30,150,25,35,125,65,75,0,0,0,60,0,0,0,50);
 SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml01",1, 0.06,0,0,0, 80,125,60,75,125,80,65,75,0,0,0,60,0,0,0,50);
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml02",1, 0.05,0,0,0, 25,0,-125,50,80,35,120,75,0,0,0,60,0,0,0,50);
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml03",1, 0.04,0,0,0, 60,95,200,50,15,200,20,125,0,0,0,60,0,0,0,50);
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml04",1, 0.03,0,0,0, 10,60,-300,25,35,80,65,75,0,0,0,60,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml03",1, 0.05,0,0,0, 60,95,200,50,15,200,20,125,0,0,0,60,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml04",1, 0.04,0,0,0, 10,60,-300,25,35,80,65,75,0,0,0,60,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml05",1, 0.03,0,0,0, 60,10,30,75,35,25,65,75,0,0,0,60,0,0,0,50);
 NewShipType.battleScarCoverage=4
 NewShipType.battleScarBudgetLow = 800
 NewShipType.battleScarBudgetNext = 1200
@@ -186,17 +186,17 @@ NewShipType.chanceOfSpecialDeath=0
 NewShipType.deadSobFadeTime=0.01
 NewShipType.trailLinger=6
 setEngineBurn(NewShipType,9,0.2,0.5,300,1.02,0.1,0.25,380);
-setEngineGlow(NewShipType,1,1,1.02,20,300,50,1.5,{0.7, 0.55, .35, 0.25});
+setEngineGlow(NewShipType,1,1,1.02,20,300,50,1.5,{0.27, 0.47, .69, 0.25});
 loadShipPatchList(NewShipType,"data:sound/sfx/ship/",0,"Hiigaran/Carrier/Engines/HDestroyerEng","",1,"Hiigaran/Carrier/Ambience/HAssaultCarrierAmb","",3,"Megaliths/RandomEmit/HANGAR_EMITTERS","NavLight_BigBay");
 loadLatchPointList(NewShipType,"SalCap","SalvagePoint1","SalvagePoint2","SalvagePoint3","SalvagePoint4","SalvagePoint5","SalvagePoint6");	
-loadLatchPointList(NewShipType,"CapCap","CapturePoint1","CapturePoint2","CapturePoint3");
-loadLatchPointList(NewShipType,"RepCap","RepairPoint1","RepairPoint2","RepairPoint3","RepairPoint4","RepairPoint5","RepairPoint6");												 
+loadLatchPointList(NewShipType,"CapCap","CapturePoint1","CapturePoint2","CapturePoint3","CapturePoint4");
+loadLatchPointList(NewShipType,"RepCap","RepairPoint1","RepairPoint2","RepairPoint3","RepairPoint4","RepairPoint5","RepairPoint6");														 
 setConcurrentBuildLimit(NewShipType,0,2);
 NewShipType.minFalloffDamageDist=400
 NewShipType.maxFalloffDamageDist=400*1.5
 NewShipType.maxFalloffScuttleDamageDist=400*3
 NewShipType.explosiveScuttleDamageOnDeath=1969
 NewShipType.maxFalloffForce=500*10
-NewShipType.explosiveDamageOnDeath=394														 
+NewShipType.explosiveDamageOnDeath=394												 
 NewShipType.hideNormalAttackUICooldown=1
 NewShipType.canSurround=1
