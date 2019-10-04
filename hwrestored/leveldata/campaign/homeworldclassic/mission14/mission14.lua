@@ -99,6 +99,7 @@ _VIFONCE048 = 0
 _VIFONCE049 = 0
 _VIFONCE050 = 0
 _VIFONCE051 = 0
+_VIFONCE996 = 0
 _VIFONCE997 = 0
 _VIFONCE998 = 0
 _VIFONCE999 = 0
@@ -5974,8 +5975,19 @@ function Init_Mission14(MissionName)
 	KAS_HW1CPUEnableAIFeature(64, 1)    --kasfEnableAIFeature(64, 1)
 	KAS_HW1CPUEnableAIFeature(256, 1)    --kasfEnableAIFeature(256, 1)
 	KAS_HW1CPUEnableAIFeature(512, 1)    --kasfEnableAIFeature(512, 1)
-
+	SobGroup_InactiveWhenCaptured("CPUCarrier", 1)
+	Players_Mothership = "Players_Mothership"
+	SobGroup_Create(Players_Mothership)
+	SobGroup_FillShipsByType( Players_Mothership, "Player_Ships0", "Kus_MotherShip" )
 	KAS_CampaignAutoSave(14, "$61700")    --kasfSaveLevel(14, LSTRING_Savegame[strCurLanguage])
+	
+end
+
+function Init_Mission14_Carrier_Capture(TeamName)
+
+	Kus_Tcarrier_Free = SobGroup_CreateShip ("Players_Mothership", "Kus_Tcarrier")
+	SobGroup_SwitchOwner( Kus_Tcarrier_Free, 0 )
+    KAS_SetColourScheme(Kus_Tcarrier_Free, 1)
 	
 end
 
@@ -5986,6 +5998,15 @@ end
 function Watch_Mission14(MissionName)
 	--FSM: FSM_Mission14
 	--MissionName = "Mission14"
+	
+	if (_VIFONCE996 == 0 and (G_SalvageCarrier ~= 0)) then  -- "ifonce" #16
+		
+	print("Creating new carrier")	
+	_VIFONCE996 = 1 --created,set;
+	G_SalvageCarrier = 0 --set
+	Init_Mission14_Carrier_Capture(TeamName)
+	end
+	
 	if (_VIFONCE038 == 0 and (1 ~= 0)) then  -- "ifonce" #38
 	
 	_VIFONCE038 = 1 --created,set;
