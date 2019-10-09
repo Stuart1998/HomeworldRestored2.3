@@ -190,7 +190,7 @@ function singlePlayerSalCapCaptureCB(capturer, capturee)
     elseif (KAS_IsTypeNoRace(capturedType, "AssaultFrigate") ~= 0) then
         G_SalvageFrigate = 1
         --print("singlePlayerSalCapCaptureCB: Salvaged AssuaultFrigate")
-    elseif (KAS_IsTypeNoRace(capturedType, "Carrier") ~= 0) then
+    elseif (KAS_IsTypeNoRace(capturedType, "Carriersp") ~= 0) then
 		G_SalvageCarrier =1
 	else
         G_SalvageTS = 1

@@ -156,7 +156,7 @@ addAbility(NewShipType,"CanBeSalvageCaptured",0,1,0,0,1,"SalCap");
 addAbility(NewShipType,"CanBeRepaired","RepCap");
 addAbility(NewShipType,"RetireAbility",1,1);
 NewShipType.noCombatGrouping=1
-addCustomCode(NewShipType,"data:Ship/Tai_Carrier/Tai_Carrier.lua","Load_Tai_Carrier","Create_Tai_Carrier","Update_Tai_Carrier","","Tai_Carrier",2)
+addCustomCode(NewShipType,"data:Ship/Tai_Carrier/Tai_Carrier.lua","Load_Tai_Carrier","Create_Tai_Carrier","Update_Tai_Carrier","","Tai_Carriersp",2)
 LoadSharedModel(NewShipType,"Tai_Carrier");
 StartShipWeaponConfig(NewShipType,"HW1_MothershipGun","Weapon_Gun0","Weapon_Gun0");
 StartShipWeaponConfig(NewShipType,"HW1_MothershipGun","Weapon_Gun1","Weapon_Gun1");
@@ -168,14 +168,14 @@ StartShipHardPointConfig(NewShipType,"Resource","Hardpoint_Resource","System","I
 StartShipHardPointConfig(NewShipType,"Fighter Production","Hardpoint_Resource","System","Production","Indestructible","","hw1_production_fighter","","","","","","","");
 StartShipHardPointConfig(NewShipType,"Corvette Production","Hardpoint_Resource","System","Production","Indestructible","","hw1_production_corvette","","","","","","","");
 StartShipHardPointConfig(NewShipType,"Frigate Production","Hardpoint_Resource","System","Production","Indestructible","","hw1_production_frigate","","","","","","","");
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg03",1, 0.40,0,0,0, 0,0,0,50,0,0,0,200,0,0,0,50,0,0,0,50);
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg02",1, 0.19,0,0,0, 30,-20,200,25,300,150,85,50,0,0,0,85,0,0,0,50);
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg05",1, 0.13,0,0,0, 25,10,-100,30,35,75,62,75,0,0,0,80,0,0,0,50);
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg01",1, 0.10,0,0,0, 60,30,150,25,35,125,65,75,0,0,0,60,0,0,0,50);
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml01",1, 0.06,0,0,0, 80,125,60,75,125,80,65,75,0,0,0,60,0,0,0,50);
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml03",1, 0.05,0,0,0, 60,95,200,50,15,200,20,125,0,0,0,60,0,0,0,50);
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml04",1, 0.04,0,0,0, 10,60,-300,25,35,80,65,75,0,0,0,60,0,0,0,50);
-SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml05",1, 0.03,0,0,0, 60,10,30,75,35,25,65,75,0,0,0,60,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg03",1, 1400.0,0,0,0, 0,0,0,50,0,0,0,200,0,0,0,50,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg02",1, 665.0,0,0,0, 30,-20,200,25,300,150,85,50,0,0,0,85,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg05",1, 455.0,0,0,0, 25,10,-100,30,35,75,62,75,0,0,0,80,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Lrg01",1, 350.0,0,0,0, 60,30,150,25,35,125,65,75,0,0,0,60,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml01",1, 210.0,0,0,0, 80,125,60,75,125,80,65,75,0,0,0,60,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml03",1, 175.0,0,0,0, 60,95,200,50,15,200,20,125,0,0,0,60,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml04",1, 140.0,0,0,0, 10,60,-300,25,35,80,65,75,0,0,0,60,0,0,0,50);
+SpawnSalvageOnDeath(NewShipType,"Slv_Chunk_Sml05",1, 105.0,0,0,0, 60,10,30,75,35,25,65,75,0,0,0,60,0,0,0,50);
 NewShipType.battleScarCoverage=4
 NewShipType.battleScarBudgetLow = 800
 NewShipType.battleScarBudgetNext = 1200

@@ -48,6 +48,7 @@ G_IntIntsAreFree = 0
 G_IntScoutsAreFree = 0
 G_MakeDefectorAnAlly = 0
 G_ProtectDefectorHasPlayed = 0
+G_SHIPSAICarrier = 0
 G_SHIPSDefector = 0
 G_SHIPSSTRCGWorldATTACK = 0
 G_STRBomDesSelectionExhausted = 0
@@ -143,6 +144,7 @@ _VIFONCE047 = 0
 _VIFONCE048 = 0
 _VIFONCE049 = 0
 _VIFONCE050 = 0
+_VIFONCE051 = 0
 
 --Following are global variables: created outside of the KAS structure and stubbed out here.
 
@@ -1454,6 +1456,11 @@ end
 function Init_Mission12_GravWellSupport_GiveToAI(TeamName)
 	--FSM: FSM_Mission12_GravWellSupport
 	--TeamName = "GW1Support"
+	if (KAS_TeamNamesEqual(TeamName, "AICarrier") ~= 0) then     --kasfThisTeamIs(kasAITeamPtr("CPUCarrier"))
+	
+	KAS_ShipsAdd("GrowSelection_AICarrier", "AICarrier")    --kasfShipsAdd(kasGrowSelectionPtr("CPUCarrier"), kasAITeamShipsPtr("CPUCarrier"))
+	G_SHIPSCPUCarrier = SobGroup_Count("GrowSelection_AICarrier") --created,set    --kasfShipsCount(kasGrowSelectionPtr("CPUCarrier"))
+	end
 	KAS_GiveToCPUPlayer(TeamName)    --kasfTeamGiveToAI()
 	
 end 
@@ -9121,16 +9128,27 @@ function Init_Mission12(MissionName)
 	Init_Mission12_ChaseDefector("ChaseInt")
 	KAS_BuildControl(1)    --kasfBuildControl(1)
 	KAS_EnableAllAIFeatures()    --kasfEnableAllAIFeatures()
-	KAS_HW1CPUDisableAIFeature(1, 1)    --kasfDisableAIFeature(1, 1)
-	KAS_HW1CPUDisableAIFeature(2, 1)    --kasfDisableAIFeature(2, 1)
 	KAS_HW1CPUDisableAIFeature(10, 1)    --kasfDisableAIFeature(10, 1)
 	KAS_HW1CPUDisableAIFeature(20, 1)    --kasfDisableAIFeature(20, 1)
 	KAS_HW1CPUDisableAIFeature(40, 1)    --kasfDisableAIFeature(40, 1)
 	KAS_HW1CPUDisableAIFeature(100, 1)    --kasfDisableAIFeature(100, 1)
 	KAS_HW1CPUDisableAIFeature(200, 1)    --kasfDisableAIFeature(200, 1)
+	SobGroup_InactiveWhenCaptured("AICarrier", 1)
+	SobGroup_InactiveWhenCaptured("Carrier", 1)
+	Players_Mothership = "Players_Mothership"
+	SobGroup_Create(Players_Mothership)
+	SobGroup_FillShipsByType( Players_Mothership, "Player_Ships0", "Kus_MotherShip" )
 	KAS_CampaignAutoSave(12, "$61600")    --kasfSaveLevel(12, LSTRING_Savegame[strCurLanguage])
 	
 end 
+
+function Init_Mission12_Carrier_Capture(TeamName)
+
+	Kus_Tcarrier_Free = SobGroup_CreateShip ("Players_Mothership", "Kus_Tcarrier")
+	SobGroup_SwitchOwner( Kus_Tcarrier_Free, 0 )
+    KAS_SetColourScheme(Kus_Tcarrier_Free, 1)
+	
+end
 
 
 --
@@ -9139,6 +9157,15 @@ end
 function Watch_Mission12(MissionName)
 	--FSM: FSM_Mission12
 	--MissionName = "Mission12"
+	
+	if (_VIFONCE051 == 0 and (G_SalvageCarrier ~= 0)) then  -- "ifonce" #16
+		
+	print("Creating new carrier")	
+	_VIFONCE051 = 0 --created,set;
+	G_SalvageCarrier = 0 --set
+	Init_Mission12_Carrier_Capture(TeamName)
+	end
+	
 	if (_VIFONCE031 == 0 and (1 ~= 0)) then  -- "ifonce" #31
 	
 	_VIFONCE031 = 1 --created,set;
@@ -9282,6 +9309,7 @@ function OnStartOrLoad()
     KASSobGroup_Create("GrowSelection_AttackingSTRIntScout")
     KASSobGroup_Create("GrowSelection_AttackingSTRMGs")
     KASSobGroup_Create("GrowSelection_Capital")
+    KASSobGroup_Create("GrowSelection_AICarrier")
     KASSobGroup_Create("GrowSelection_CarrierAttackedACT1")
     KASSobGroup_Create("GrowSelection_CarrierCarriersACT1")
     KASSobGroup_Create("GrowSelection_CarrierCorvettesACT1")
