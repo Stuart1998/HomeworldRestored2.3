@@ -8,7 +8,7 @@
 
 function DetermChunk()
 
-    addSquadron("Carrier0", "Tai_Carriersp", {-2632.91,-27.79,24821.545}, 1, {0,-175,0}, 0, 0)
+    addSquadron("Carrier0", "Tai_Carrier", {-2632.91,-27.79,24821.545}, 1, {0,-175,0}, 0, 0)
     addSquadron("Collector0", "Tai_ResourceCollector", {-2667.175,251.825,24577.735}, 1, {0,-175,0}, 0, 0)
     addSquadron("Defenders10", "Tai_Defender", {68.25,-2884.175,7900.9}, 1, {0,-178,0}, 0, 0)
     addSquadron("Defenders11", "Tai_Defender", {68.25,-2884.175,7900.9}, 1, {0,-178,0}, 0, 0)

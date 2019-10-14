@@ -8,7 +8,7 @@
 
 function DetermChunk()
 
-    addSquadron("CPUCarrier0", "Tai_Carriersp", {-1658.825,0,21295.645}, 1, {0,-160,0}, 0, 0)
+    addSquadron("CPUCarrier0", "Tai_Carrier", {-1658.825,0,21295.645}, 1, {0,-160,0}, 0, 0)
     addSquadron("CPUCollector0", "Tai_ResourceCollector", {2060.66,80.36,19576.655}, 1, {0,-159,0}, 0, 0)
     addSquadron("CPUCollector1", "Tai_ResourceCollector", {2060.66,80.36,19576.655}, 1, {0,-159,0}, 0, 0)
     addSquadron("CloakACruiser0", "Tai_CloakGenerator", {-4343.99,71.75,17897.6}, 1, {0,-145,0}, 0, 0)
