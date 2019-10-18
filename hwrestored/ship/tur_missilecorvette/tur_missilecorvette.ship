@@ -153,9 +153,12 @@ addAbility(NewShipType,"GuardCommand",1,3000,500);
 addAbility(NewShipType,"HyperspaceViaGateCommand",1,3,1,0.3);
 addAbility(NewShipType,"RetireAbility",1,0);
 addAbility(NewShipType,"CanBeSalvageCaptured",0,1,0,1,1,"SalCap");
+addAbility(NewShipType, "SpecialAttack", 1, "MissileVolley")
 LoadModel(NewShipType,1);
 StartShipWeaponConfig(NewShipType,"Tur_CorvetteMissile","Weapon_Gun0","Weapon_Gun0");
 StartShipWeaponConfig(NewShipType,"Tur_CorvetteMissile","Weapon_Gun1","Weapon_Gun1");
+StartShipWeaponConfig(NewShipType,"Tur_CorvetteMissleVolley","Weapon_Gun0","Weapon_Gun0");
+StartShipWeaponConfig(NewShipType,"Tur_CorvetteMissleVolley","Weapon_Gun1","Weapon_Gun1");
 addShield(NewShipType,"EMP",75,20);
 NewShipType.battleScarCoverage=1
 NewShipType.sobDieTime=2

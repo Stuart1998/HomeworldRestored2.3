@@ -10,7 +10,7 @@
 // Steam Workshop.  The description text is limited to 8,000 characters total in length.
 
 // title of the MOD that appears on the Steam Workshop (limited to 128 characters)
-Title: Homeworld Restored v 0.1.0.0 ALPHA 9
+Title: Homeworld Restored v 0.1.0.0 ALPHA X
 
 // tags must be individual words separated by spaces.
 Tags: homeworld ship space restored remastered sound fixed paper homeworldrm
