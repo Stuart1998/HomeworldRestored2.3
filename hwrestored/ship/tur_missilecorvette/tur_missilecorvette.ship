@@ -157,8 +157,8 @@ addAbility(NewShipType, "SpecialAttack", 1, "MissileVolley")
 LoadModel(NewShipType,1);
 StartShipWeaponConfig(NewShipType,"Tur_CorvetteMissile","Weapon_Gun0","Weapon_Gun0");
 StartShipWeaponConfig(NewShipType,"Tur_CorvetteMissile","Weapon_Gun1","Weapon_Gun1");
-StartShipWeaponConfig(NewShipType,"Tur_CorvetteMissleVolley","Weapon_Gun0","Weapon_Gun0");
-StartShipWeaponConfig(NewShipType,"Tur_CorvetteMissleVolley","Weapon_Gun1","Weapon_Gun1");
+StartShipWeaponConfig(NewShipType,"Tur_CorvetteMissileVolley","Weapon_Gun0","Weapon_Gun0");
+StartShipWeaponConfig(NewShipType,"Tur_CorvetteMissileVolley","Weapon_Gun1","Weapon_Gun1");
 addShield(NewShipType,"EMP",75,20);
 NewShipType.battleScarCoverage=1
 NewShipType.sobDieTime=2
