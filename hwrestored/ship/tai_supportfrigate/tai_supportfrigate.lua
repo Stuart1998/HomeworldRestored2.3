@@ -1,13 +1,5 @@
 function Update_Tai_SupportFrigate(CustomGroup, playerIndex, shipID)
     NoSalvageScuttle(CustomGroup, playerIndex, shipID)
-end
-
-function Create_Tai_SupLatchDock(CustomGroup, playerIndex, shipID)
-	SobGroup_Create("LatchDockTempGroup"..shipID)
-	SobGroup_CreateIfNotExist("LatchDockTempGroup")
-end
-
-function Update_Tai_SupLatchDock(CustomGroup, playerIndex, shipID)
 	if (SobGroup_AreAllInRealSpace(CustomGroup)==1) then
 		if (SobGroup_Empty("LatchDockTempGroup"..shipID)==0) then --Exited Hyperspace with ships docked
 			if (SobGroup_IsDoingAbility("LatchDockTempGroup"..shipID, AB_Dock)==0) then
@@ -44,6 +36,11 @@ function Update_Tai_SupLatchDock(CustomGroup, playerIndex, shipID)
 			Volume_Delete("LatchDockTempVolume")
 		end
 	end
+end
+
+function Create_Tai_SupLatchDock(CustomGroup, playerIndex, shipID)
+	SobGroup_Create("LatchDockTempGroup"..shipID)
+	SobGroup_CreateIfNotExist("LatchDockTempGroup")
 end
 
 function Destroy_Tai_SupLatchDock(CustomGroup, playerIndex, shipID)
