@@ -1,3 +1,8 @@
+function Create_Tai_SupportFrigate(CustomGroup, playerIndex, shipID)
+	SobGroup_Create("LatchDockTempGroup"..shipID)
+	SobGroup_CreateIfNotExist("LatchDockTempGroup")
+end
+
 function Update_Tai_SupportFrigate(CustomGroup, playerIndex, shipID)
     NoSalvageScuttle(CustomGroup, playerIndex, shipID)
 	if (SobGroup_AreAllInRealSpace(CustomGroup)==1) then
@@ -38,12 +43,8 @@ function Update_Tai_SupportFrigate(CustomGroup, playerIndex, shipID)
 	end
 end
 
-function Create_Tai_SupLatchDock(CustomGroup, playerIndex, shipID)
-	SobGroup_Create("LatchDockTempGroup"..shipID)
-	SobGroup_CreateIfNotExist("LatchDockTempGroup")
-end
 
-function Destroy_Tai_SupLatchDock(CustomGroup, playerIndex, shipID)
+function Destroy_Tai_SupportFrigate(CustomGroup, playerIndex, shipID)
 	if (SobGroup_Empty("LatchDockTempGroup"..shipID)==0) then
 		SobGroup_MakeSelectable("LatchDockTempGroup"..shipID,1)
 		SobGroup_SetHidden( "LatchDockTempGroup"..shipID, 0)
