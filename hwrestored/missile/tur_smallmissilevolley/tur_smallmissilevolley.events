@@ -38,7 +38,7 @@ effects =
         {
             { "anim", "MissileTrail" },
             { "animtime", "-1" },
-            { "marker", "MissileEngine1" },
+            { "marker", "EngineNozzle1" },
             { "fx", "torpedo_steam_spray" },
             --{ "sound", "SPECIAL/SPECIAL_ABILITIES_MISSLE_STEAM" },
             { "fx_scale", "2.2" },
