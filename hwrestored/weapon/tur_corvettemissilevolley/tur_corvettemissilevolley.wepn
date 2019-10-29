@@ -1,4 +1,4 @@
-StartWeaponConfig(NewWeaponType,"Fixed","Missile","Tur_SmallMissileVolley","Special Attack",350,2100*1.2,0,0,0,0,1,1,1,50,0,0,1,0,0,0,0.1,"Normal",1,0,0);
+StartWeaponConfig(NewWeaponType,"Fixed","Missile","Tur_SmallMissileVolley","Special Attack",350,2100*1.2,0,0,0,0,1,1,1,0.25,3,50,1,0,0,0,0.1,"Normal",1,0,0);
 AddWeaponResult(NewWeaponType,"Hit","DamageHealth","Target",110,110,"");
 setPenetration(NewWeaponType,5,1,
 {Unarmoured=1.0},
