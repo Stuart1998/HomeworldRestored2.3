@@ -1163,10 +1163,6 @@ tai_carrier = {
 	},
 }
 
-kus_tcarrier = tai_carrier
-
-tai_carriersp = tai_carrier
-
 tai_defender = {
 	LargeIcon = {
 		--pixelUVCoords = 1,

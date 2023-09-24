@@ -13,32 +13,32 @@ Fleet =
     },
     {
         Type = "Kus_ResourceCollector",
-        Number = 1,
+        Number = 2,
     },
     {
         Type = "Kus_SalvageCorvette",
-        Number = 3,
+        Number = 2,
     },    
     {
         Type = "Kus_Interceptor",
-        Number = 8,
+        Number = 16,
     },
     {
-        Type = "Kus_AttackBomber",
-        Number = 8,
+        Type = "Kus_RepairCorvette",
+        Number = 2,
     },
     {
-        Type = "Kus_LightCorvette",
-        Number = 5,
+        Type = "Kus_HeavyCorvette",
+        Number = 6,
     },
 }
 
 -- and we think they should have this much money:
-RUs = 400
+RUs = 800
 
 --Load expanded options
-dofilepath("data:scripts/playerspatch_util.lua")
+dofilepath("data:scripts/playerspatch/playerspatch_sp_util.lua")
 RefMissionDifficultyScale = GetMissionDifficultyScale()
 
 multiplierForExtraShips = RefMissionDifficultyScale
-multiplierForExtraRU = RefMissionDifficultyScale
+multiplierForExtraRU = 1
