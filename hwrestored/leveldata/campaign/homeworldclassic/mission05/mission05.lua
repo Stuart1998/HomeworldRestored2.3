@@ -5217,9 +5217,9 @@ function Init_Mission05_Carrier_Capture(TeamName)
 	Kus_Tcarrier_Free = SobGroup_CreateShip ("Players_Mothership", "Kus_Tcarrier")
 	SobGroup_SwitchOwner( Kus_Tcarrier_Free, 0 )
     KAS_SetColourScheme(Kus_Tcarrier_Free, 1)
+	Player_SetRU(0, Player_GetRU(0)-2799)
 	KASSobGroup_Create("KillTaiidan")
-	Player_FillShipsByType("KillTaiidan", 1, "Tai_Interceptor")
-	Player_FillShipsByType("KillTaiidan", 1, "Tai_AssaultFrigate")
+	Player_FillProximitySobGroup("Players_Mothership",1,"KillTaiidan",500)
 	SobGroup_SetHealth("KillTaiidan",0)
 	
 end

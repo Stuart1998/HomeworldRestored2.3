@@ -788,6 +788,8 @@ kus_carrier = {
 	},
 }
 
+kus_tcarrier = tai_carrier
+
 kus_defender = {
 	LargeIcon = {
 		--pixelUVCoords = 1,

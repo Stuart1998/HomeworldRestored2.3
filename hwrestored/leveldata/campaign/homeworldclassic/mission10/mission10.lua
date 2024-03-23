@@ -1240,7 +1240,6 @@ function Init_Mission10_Carrier_Capture(TeamName)
 	Kus_Tcarrier_Free = SobGroup_CreateShip ("Players_Mothership", "Kus_Tcarrier")
 	SobGroup_SwitchOwner( Kus_Tcarrier_Free, 0 )
     KAS_SetColourScheme(Kus_Tcarrier_Free, 1)
-	
 end
 
 
